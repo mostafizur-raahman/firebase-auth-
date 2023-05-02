@@ -1,12 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProviders';
-
+import toast from 'react-hot-toast';
+import { FaBeer, FaGithub, FaGoogle } from 'react-icons/fa';
 const Registration = () => {
 
     const [error, setError] = useState(null);
-    const { createUser } = useContext(AuthContext);
+    const { createUser, handleGoogle } = useContext(AuthContext);
 
+    const signInWithGoogle = () => {
+        handleGoogle();
+    }
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -26,10 +30,11 @@ const Registration = () => {
             })
     }
     return (
-        <div>
+        <div className='mt-5'>
             <div className="relative flex flex-col justify-center overflow-hidden">
                 <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-lg">
                     <h1 className="text-3xl font-semibold text-center text-purple-700">Registration please</h1>
+
                     <form className="space-y-4" onSubmit={handleRegister}>
                         <div>
                             <label className="label">
@@ -57,10 +62,20 @@ const Registration = () => {
                             <input type="text" name='imgurl' placeholder="Your Name" className="w-full input input-bordered input-primary" />
                         </div>
                         <p className="text-xs text-gray-600 hover:underline hover:text-blue-600">Already have an account on  chef koi? please  <Link to='/login'>Login</Link> </p>
-                        <div>
+                        <div className='text-center'>
                             <input type="submit" value="Register" className='btn btn-primary' />
                         </div>
                     </form>
+                    <div className='ml-14'>
+                        <div className='input input-bordered mb-5 input-success w-full max-w-xs flex items-center gap-5 mt-5'>
+                            <FaGoogle className='text-3xl' />
+                            <button className='text-xl' onClick={signInWithGoogle}> sign in with Gmail</button>
+                        </div>
+                        <div className='input input-bordered input-success w-full max-w-xs flex items-center gap-5'>
+                            <FaGithub className='text-black-500 text-3xl' />
+                            <button className='text-xl'>Sign in with Github</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
