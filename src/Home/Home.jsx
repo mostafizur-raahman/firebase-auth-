@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css'
 import { Link, useLoaderData } from 'react-router-dom';
+import { FaBrain, FaUser } from 'react-icons/fa';
 const Home = () => {
     const allData = useLoaderData();
     const { id, chefName, chefPicture, yearsOfExperience, numRecipes, likes } = allData;
@@ -18,8 +19,8 @@ const Home = () => {
                                 <img src={data?.chefPicture} alt="Shoes" className="rounded-xl w-[200px] h-[150px]  " />
                             </figure>
                             <div className="card-body items-center text-center">
-                                <h2 className="card-title">{data?.chefName}</h2>
-                                <p>Expericnce : {data?.yearsOfExperience}yrs</p>
+                                <h2 className="card-title flex"> <FaUser />{data?.chefName}</h2>
+                                <p className='flex items-center gap-2'><FaBrain /> Expericnce: {data?.yearsOfExperience}yrs</p>
                                 <p>Number of Recipe : {data?.numRecipes}</p>
                                 <p> {data?.likes} Likes</p>
                                 <div className="card-actions">
