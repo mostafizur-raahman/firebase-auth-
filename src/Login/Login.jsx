@@ -31,6 +31,7 @@ const Login = () => {
             <div className="relative flex flex-col justify-center overflow-hidden">
                 <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-lg">
                     <h1 className="text-3xl font-semibold text-center text-purple-700">Log in</h1>
+                    <p className='text-red-500'>{error}</p>
                     <form className="space-y-4" onSubmit={handleLOgIn}>
                         <div>
                             <label className="label">

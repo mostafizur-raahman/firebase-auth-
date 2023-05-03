@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css'
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 const Home = () => {
     const allData = useLoaderData();
     const { id, chefName, chefPicture, yearsOfExperience, numRecipes, likes } = allData;
@@ -23,7 +23,7 @@ const Home = () => {
                                 <p>Number of Recipe : {data?.numRecipes}</p>
                                 <p> {data?.likes} Likes</p>
                                 <div className="card-actions">
-                                    <button className="btn btn-primary">View Recipe</button>
+                                    <Link className="btn btn-primary" to={`/chefDetails/${data.id}`}>View Recipe</Link>
                                 </div>
                             </div>
                         </div>
