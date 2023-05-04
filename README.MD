@@ -7,6 +7,7 @@
 * then server-site to load data 
 * then firabase config google,github,email,password
 * Toast and Lazy Load
+* delpoy server and client side [vercel and firebase]
 * Thats all of my projects
 
-[Live link : Hosting ]()
+[Live link : Hosting ](https://assignment-10-12186.web.app/)
