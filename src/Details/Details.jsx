@@ -1,19 +1,15 @@
 import React, { useContext } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 import { FaBookReader, FaBrain, FaHeart, FaStar, FaUser } from 'react-icons/fa';
 import { useLoaderData, useParams } from 'react-router-dom';
+import ChefRecipe from '../ChefRecipe/ChefRecipe';
+
 
 
 const Details = () => {
     const { id } = useParams();
     const data = useLoaderData();
-
-
     const { chefPicture, bio, chefName, yearsOfExperience, numRecipes, likes, recipes } = data;
-    const notify = () => {
-        toast('Favoroit chef success.');
-        console.log("notify");
-    }
+
     return (
         <div>
             <div>
@@ -30,27 +26,7 @@ const Details = () => {
 
                 <div className='flex justify-between mx-10 mt-10 mb-10'>
                     {
-                        recipes?.map(rec =>
-                            <div>
-                                <div className="card w-96 h-full glass bg-yellow-400">
-                                    <div className="card-body">
-                                        <h2 className="card-title text-2xl font-bold">{rec.name}</h2>
-                                        <p className='text-xl font-semibold underline'>ingredients:</p>
-                                        {
-                                            rec.ingredients.map(i => <li>{i}</li>)
-                                        }
-                                        <p className='text-xl font-bold'>Method:</p>
-                                        {
-                                            rec.method
-                                        }
-                                        <h1 className='text-3xl flex gap-2 items-center '><FaStar className='text-red-500 ' />{rec.rating}</h1>
-                                        <button onClick={notify} className='text-2xl font-mono font-bold btn btn-outline'>Favorite  <Toaster /></button>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        )
+                        recipes?.map(rec => <ChefRecipe rec={rec}> </ChefRecipe>)
                     }
                 </div>
             </div>

@@ -11,6 +11,7 @@ const AuthProviders = ({ children }) => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true)
     const handleGoogle = () => {
+        setLoading(true)
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider)
             .then(res => {
@@ -23,6 +24,7 @@ const AuthProviders = ({ children }) => {
             })
     }
     const HandleGithub = () => {
+        setLoading(true)
         const githubProvider = new GithubAuthProvider();
         signInWithPopup(auth, githubProvider)
             .then(res => {
@@ -46,7 +48,9 @@ const AuthProviders = ({ children }) => {
     }
 
     const logOut = () => {
+        setLoading(true)
         return signOut(auth)
+
     }
 
 
@@ -54,7 +58,7 @@ const AuthProviders = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
             console.log(loggedUser)
             setUser(loggedUser)
-
+            setLoading(false)
         })
 
         return () => unsubscribe();
