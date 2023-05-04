@@ -1,20 +1,22 @@
 import React, { useContext } from 'react';
-import { FaBookReader, FaBrain, FaHeart, FaUser } from 'react-icons/fa';
+import toast, { Toaster } from 'react-hot-toast';
+import { FaBookReader, FaBrain, FaHeart, FaStar, FaUser } from 'react-icons/fa';
 import { useLoaderData, useParams } from 'react-router-dom';
-import { AuthContext } from '../Providers/AuthProviders';
+
 
 const Details = () => {
     const { id } = useParams();
     const data = useLoaderData();
-    const { loading } = useContext(AuthContext);
 
 
     const { chefPicture, bio, chefName, yearsOfExperience, numRecipes, likes, recipes } = data;
-
+    const notify = () => {
+        toast('Favoroit chef success.');
+        console.log("notify");
+    }
     return (
         <div>
             <div>
-                <h1></h1>
                 <div className='flex gap-5 mx-10'>
                     <img className='w-[400px] h-[400px] rounded-full' src={chefPicture} alt="" />
                     <div>
@@ -30,15 +32,23 @@ const Details = () => {
                     {
                         recipes?.map(rec =>
                             <div>
-                                <div className="card w-96 glass">
+                                <div className="card w-96 h-full glass bg-yellow-400">
                                     <div className="card-body">
-                                        <h2 className="card-title">{rec.name}</h2>
-                                        <p>How to park your car at your garage?</p>
-                                        <div className="card-actions justify-end">
-                                            <button className="btn btn-primary">Learn now!</button>
-                                        </div>
+                                        <h2 className="card-title text-2xl font-bold">{rec.name}</h2>
+                                        <p className='text-xl font-semibold underline'>ingredients:</p>
+                                        {
+                                            rec.ingredients.map(i => <li>{i}</li>)
+                                        }
+                                        <p className='text-xl font-bold'>Method:</p>
+                                        {
+                                            rec.method
+                                        }
+                                        <h1 className='text-3xl flex gap-2 items-center '><FaStar className='text-red-500 ' />{rec.rating}</h1>
+                                        <button onClick={notify} className='text-2xl font-mono font-bold btn btn-outline'>Favorite  <Toaster /></button>
                                     </div>
                                 </div>
+
+
                             </div>
                         )
                     }
