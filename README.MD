@@ -1,4 +1,4 @@
-**Algorith that i use this projects**
+**Algorithm that i use this projects**
 * first of all i create a root life  
 * then i install react router and other important things that i need for 
 * then created some components 
