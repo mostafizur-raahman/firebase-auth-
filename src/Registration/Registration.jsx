@@ -54,7 +54,7 @@ const Registration = () => {
                             <label className="label">
                                 <span className="text-base label-text">Image Url</span>
                             </label>
-                            <input type="file" name='imgurl' placeholder="Your Name" className="w-full input input-bordered input-primary" />
+                            <input type="text" name='imgurl' placeholder="Your Name" className="w-full input input-bordered input-primary" />
                         </div>
                         <p className="text-xs text-gray-600 hover:underline hover:text-blue-600">Already have an account on  chef koi? please  <Link to='/login'>Login</Link> </p>
                         <div className='text-center'>

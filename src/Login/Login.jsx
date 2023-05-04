@@ -8,10 +8,13 @@ const Login = () => {
 
 
     const [error, setError] = useState(null);
-    const { createUser, handleGoogle, loginUser } = useContext(AuthContext);
+    const { createUser, handleGoogle, loginUser, HandleGithub } = useContext(AuthContext);
 
     const signInWithGoogle = () => {
         handleGoogle();
+    }
+    const signInWithGithub = () => {
+        HandleGithub();
     }
 
     const handleLOgIn = (e) => {
@@ -65,7 +68,7 @@ const Login = () => {
                 </div>
                 <div className='input input-bordered input-success w-full max-w-xs flex items-center gap-5'>
                     <FaGithub className='text-black-500 text-3xl' />
-                    <button className='text-xl'>Sign in with Github</button>
+                    <button className='text-xl' onClick={signInWithGithub}>Sign in with Github</button>
                 </div>
             </div>
         </div>

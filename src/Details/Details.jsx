@@ -5,12 +5,13 @@ import { useLoaderData, useParams } from 'react-router-dom';
 const Details = () => {
     const { id } = useParams();
     const data = useLoaderData();
-    console.log("details -----------", data);
+
+
     const { chefPicture, bio, chefName, yearsOfExperience, numRecipes, likes, recipes } = data;
+
     return (
         <div>
-
-            <div className=''>
+            <div>
                 <div className='flex gap-5 mx-10'>
                     <img className='w-[400px] h-[400px] rounded-full' src={chefPicture} alt="" />
                     <div>
@@ -24,8 +25,8 @@ const Details = () => {
 
                 <div className='flex justify-between mx-10 mt-10 mb-10'>
                     {
-                        recipes.map(rec => {
-                            return <div>
+                        recipes?.map(rec =>
+                            <div>
                                 <div className="card w-96 glass">
                                     <div className="card-body">
                                         <h2 className="card-title">{rec.name}</h2>
@@ -36,7 +37,7 @@ const Details = () => {
                                     </div>
                                 </div>
                             </div>
-                        })
+                        )
                     }
                 </div>
             </div>
