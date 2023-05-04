@@ -56,7 +56,7 @@ const Login = () => {
                             <input type="password" placeholder="Enter Password" name='password'
                                 className="w-full input input-bordered input-primary" />
                         </div>
-                        <p className="text-xs text-gray-600 hover:underline hover:text-blue-600">New to chef koi? <Link to='/registration'>Register</Link> </p>
+                        <p className="text-xs text-gray-600 hover:underline hover:text-blue-600"> <Link to='/registration'>New to chef koi? Register</Link> </p>
                         <div>
                             <input type="submit" value="Login" className='btn btn-primary' />
                         </div>

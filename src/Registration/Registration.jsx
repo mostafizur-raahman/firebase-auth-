@@ -10,7 +10,7 @@ const Registration = () => {
     const [error, setError] = useState(null);
     const { updateUserData, createUser, user } = useContext(AuthContext);
     //toastif
-    const notify = () => toast("Wow so easy!");
+    const notify = () => toast("Succesfully registered,congratulations!");
     //handle register
     const handleRegister = (event) => {
         event.preventDefault();
@@ -74,7 +74,7 @@ const Registration = () => {
                             </label>
                             <input type="text" name='imgurl' placeholder="Your Name" className="w-full input input-bordered input-primary" />
                         </div>
-                        <p className="text-xs text-gray-600 hover:underline hover:text-blue-600">Already have an account on  chef koi? please  <Link to='/login'>Login</Link> </p>
+                        <p className="text-xs text-gray-600 hover:underline hover:text-blue-600"> <Link to='/login'>Already have an account on  chef koi? please  Login</Link> </p>
                         <div className='text-center' >
                             <input type="submit" value="Register" className='btn btn-primary' />
                         </div>
