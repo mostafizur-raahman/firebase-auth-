@@ -34,7 +34,7 @@ const Home = () => {
                 </div>
             </div>
             {/* extra sections */}
-            <div className='flex  px-10 py-5'>
+            <div className='lg:flex grid px-10 py-5'>
                 <div className=' px-10 py-5'>
                     <h1 className='text-5xl font-bold'>Menues</h1>
                     <hr className='w-[100px] text-4xl border-2' />
@@ -59,7 +59,33 @@ const Home = () => {
                     <img src="https://i.ibb.co/Jt2cCD1/xx.png" className='bg-white mt-10' alt="" />
                 </div>
             </div>
-        </div>
+            {/* customer feedback */}
+            <div>
+                <h1 className='text-center text-4xl font-bold'>What Customers Are Saying <br />
+                    <span className='text-primary'> About Us</span></h1>
+
+                <hr className='border-2 border-yellow-400 w-[200px] mx-auto' />
+                <h1 className='text-center mt-5 text-xl '>We pride ourselves on what our happy
+                    clients say.</h1>
+                <div className='gird lg:flex justify-between mx-10 my-10'>
+                    <div>
+                        <img src="https://i.ibb.co/Bjn4CqJ/1.jpg" className='mx-auto w-[100px] h-[100px] rounded-full' alt="" />
+                        <h1 className='mt-4 text-center text-2xl font-semibold'>Abdul Kobir</h1>
+                        <p className='p-2'>"I recently had the pleasure of dining at this restaurant and the food was absolutely amazing. The flavors were so vibrant and every dish was expertly crafted. I highly recommend the lobster risotto - it was easily the best dish I've had in a long time."</p>
+                    </div>
+                    <div>
+                        <img src="https://i.ibb.co/j3TgyBr/2.jpg" className='mx-auto w-[100px] h-[100px] rounded-full' alt="" />
+                        <h1 className='mt-4 text-center text-2xl font-semibold'>Abdul Kobir</h1>
+                        <p className='p-2'>"I ordered takeout from this restaurant and was blown away by the quality of the food. Everything arrived fresh and hot, and the flavors were incredible. I especially loved the spicy tuna roll and the crispy shrimp tempura. I will definitely be ordering from here again!"</p>
+                    </div>
+                    <div>
+                        <img src="https://i.ibb.co/f0bxNpW/3.jpg" className='mx-auto w-[100px] h-[100px] rounded-full' alt="" />
+                        <h1 className=' mt-4 text-center text-2xl font-semibold'>Abdul Kobir</h1>
+                        <p className='p-2'>"I visited this café for brunch and was pleasantly surprised by the variety of options on the menu. I ended up ordering the avocado toast and it was delicious - the bread was perfectly toasted and the avocado was creamy and flavorful. The coffee was also top-notch. I highly recommend this place!"</p>
+                    </div>
+                </div>
+            </div>
+        </div >
     );
 };
 

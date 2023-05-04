@@ -6,6 +6,7 @@ import { FaBeer, FaGithub, FaGoogle } from 'react-icons/fa';
 const Registration = () => {
 
     const [error, setError] = useState(null);
+    const { updateUserData, createUser } = useContext(AuthContext);
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -22,6 +23,7 @@ const Registration = () => {
         createUser(email, password)
             .then(res => {
                 const loggedUser = res.user;
+                updateUserData(loggedUser, name, img)
                 console.log(loggedUser, img);
             })
             .catch(e => {
