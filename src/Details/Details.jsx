@@ -26,7 +26,7 @@ const Details = () => {
 
                 <div className='flex justify-between mx-10 mt-10 mb-10'>
                     {
-                        recipes?.map(rec => <ChefRecipe rec={rec}> </ChefRecipe>)
+                        recipes?.map(rec => <ChefRecipe key={rec.name} rec={rec}> </ChefRecipe>)
                     }
                 </div>
             </div>

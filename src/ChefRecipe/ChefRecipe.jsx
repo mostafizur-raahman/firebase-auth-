@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast';
 import { FaStar } from 'react-icons/fa';
 
 const ChefRecipe = ({ rec }) => {
     console.log(rec);
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const notify = () => {
         toast('Favoroit chef success.');
     }
+    const handleCombinedClick = () => {
+        notify();
+        setIsDisabled(true);
+    }
+
     return (
 
         <div>
@@ -25,7 +31,7 @@ const ChefRecipe = ({ rec }) => {
                     <h1 className='text-3xl flex gap-2 items-center '><FaStar className='text-red-500 ' />{rec.rating}</h1>
 
                 </div>
-                <button onClick={notify} className='text-2xl font-mono font-bold btn btn-outline'>Favorite  <Toaster /></button>
+                <button onClick={handleCombinedClick} className='text-2xl font-mono font-bold btn btn-outline' disabled={isDisabled}>Favorite</button>
             </div>
 
 

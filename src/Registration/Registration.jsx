@@ -1,12 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProviders';
-import toast from 'react-hot-toast';
+
 import { FaBeer, FaGithub, FaGoogle } from 'react-icons/fa';
+import { toast } from 'react-hot-toast';
 const Registration = () => {
 
+    // state and context api State: error , context-api : sharing data
     const [error, setError] = useState(null);
-    const { updateUserData, createUser } = useContext(AuthContext);
+    const { updateUserData, createUser, user } = useContext(AuthContext);
+    //toastif
+    const notify = () => toast("Wow so easy!");
+    //handle register
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -20,16 +25,23 @@ const Registration = () => {
             setError("Password must be grater then 6 charecter!");
             return;
         }
+        // create user 
         createUser(email, password)
             .then(res => {
                 const loggedUser = res.user;
                 updateUserData(loggedUser, name, img)
-                console.log(loggedUser, img);
+                //console.log(loggedUser, img);
+
             })
             .catch(e => {
                 setError(e.message);
             })
     }
+    // notify 
+    if (user) {
+        notify()
+    }
+
     return (
         <div className='mt-5'>
             <div className="relative flex flex-col justify-center overflow-hidden">
@@ -63,7 +75,7 @@ const Registration = () => {
                             <input type="text" name='imgurl' placeholder="Your Name" className="w-full input input-bordered input-primary" />
                         </div>
                         <p className="text-xs text-gray-600 hover:underline hover:text-blue-600">Already have an account on  chef koi? please  <Link to='/login'>Login</Link> </p>
-                        <div className='text-center'>
+                        <div className='text-center' >
                             <input type="submit" value="Register" className='btn btn-primary' />
                         </div>
                     </form>

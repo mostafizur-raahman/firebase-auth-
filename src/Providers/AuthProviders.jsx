@@ -9,7 +9,8 @@ const AuthProviders = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+    // handle google directly
     const handleGoogle = () => {
         setLoading(true)
         const googleProvider = new GoogleAuthProvider();
@@ -23,6 +24,7 @@ const AuthProviders = ({ children }) => {
                 console.log(e.message);
             })
     }
+    // using github directly 
     const HandleGithub = () => {
         setLoading(true)
         const githubProvider = new GithubAuthProvider();
@@ -37,21 +39,23 @@ const AuthProviders = ({ children }) => {
                 console.log(e.message);
             })
     }
-
+    // create user with mail and pass
     const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
+    // logged in user
     const loginUser = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
-
+    // logout
     const logOut = () => {
         setLoading(true)
         return signOut(auth)
 
     }
+    // update user data
     const updateUserData = (user, name, photo) => {
         setLoading(true);
         return updateProfile(auth.currentUser, {
@@ -61,6 +65,7 @@ const AuthProviders = ({ children }) => {
     }
 
 
+    // unsubcriber
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
             console.log(loggedUser)
