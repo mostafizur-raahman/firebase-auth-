@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { FaBeer, FaGithub, FaGoogle } from 'react-icons/fa';
 const Registration = () => {
 
-
+    const [error, setError] = useState(null);
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -14,7 +14,11 @@ const Registration = () => {
         const password = form.password.value;
         const img = form.imgurl.value;
         // console.log(name, email, password, img);
-        setError(null);
+        setError(null)
+        if (password.length < 6) {
+            setError("Password must be grater then 6 charecter!");
+            return;
+        }
         createUser(email, password)
             .then(res => {
                 const loggedUser = res.user;
@@ -29,7 +33,7 @@ const Registration = () => {
             <div className="relative flex flex-col justify-center overflow-hidden">
                 <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-lg">
                     <h1 className="text-3xl font-semibold text-center text-purple-700">Registration please</h1>
-
+                    <h1 className='text-red-500 text-center mt-4 text-xl font-mono font-bold'>{error && <p>{error}</p>}</h1>
                     <form className="space-y-4" onSubmit={handleRegister}>
                         <div>
                             <label className="label">

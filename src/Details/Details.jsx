@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaBookReader, FaBrain, FaHeart, FaUser } from 'react-icons/fa';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { AuthContext } from '../Providers/AuthProviders';
 
 const Details = () => {
     const { id } = useParams();
     const data = useLoaderData();
+    const { loading } = useContext(AuthContext);
 
 
     const { chefPicture, bio, chefName, yearsOfExperience, numRecipes, likes, recipes } = data;
@@ -12,6 +14,7 @@ const Details = () => {
     return (
         <div>
             <div>
+                <h1></h1>
                 <div className='flex gap-5 mx-10'>
                     <img className='w-[400px] h-[400px] rounded-full' src={chefPicture} alt="" />
                     <div>

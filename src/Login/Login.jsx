@@ -1,20 +1,21 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProviders';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
 
 
-
     const [error, setError] = useState(null);
     const { createUser, handleGoogle, loginUser, HandleGithub } = useContext(AuthContext);
-
+    const navigate = useNavigate();
     const signInWithGoogle = () => {
         handleGoogle();
+        navigate('/')
     }
     const signInWithGithub = () => {
         HandleGithub();
+        navigate('/')
     }
 
     const handleLOgIn = (e) => {
@@ -27,6 +28,7 @@ const Login = () => {
             .then(res => {
                 const loggedUser = res.user;
                 console.log(loggedUser);
+                navigate('/')
             })
             .catch(e => {
                 setError(e.message);

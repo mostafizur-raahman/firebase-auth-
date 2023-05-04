@@ -9,6 +9,7 @@ const AuthProviders = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true)
     const handleGoogle = () => {
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider)
@@ -36,10 +37,11 @@ const AuthProviders = ({ children }) => {
     }
 
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
     const loginUser = (email, password) => {
-
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -64,7 +66,8 @@ const AuthProviders = ({ children }) => {
         loginUser,
         logOut,
         handleGoogle,
-        HandleGithub
+        HandleGithub,
+        loading
 
     }
     return (
